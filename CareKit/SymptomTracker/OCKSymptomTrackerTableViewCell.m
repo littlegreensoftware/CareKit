@@ -32,7 +32,7 @@
 #import "OCKSymptomTrackerTableViewCell.h"
 #import "OCKDefines_Private.h"
 #import "OCKHelpers.h"
-#import "OCKLabel.h"
+//#import "OCKLabel.h"  //****************** LGS CUSTOMIZATION *******************
 
 
 static const CGFloat TopMargin = 30.0;
@@ -40,7 +40,7 @@ static const CGFloat BottomMargin = 30.0;
 static const CGFloat HorizontalMargin = 10.0;
 
 @implementation OCKSymptomTrackerTableViewCell {
-    OCKLabel *_titleLabel;
+    //OCKLabel *_titleLabel;  //****************** LGS CUSTOMIZATION *******************
     OCKLabel *_textLabel;
     OCKLabel *_valueLabel;
     OCKLabel *_unitLabel;

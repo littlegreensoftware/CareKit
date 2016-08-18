@@ -101,8 +101,18 @@
     _tableView.sectionHeaderHeight = UITableViewAutomaticDimension;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+// ***************** LGS CUSTOMIZATION ********************
+//- (void)viewDidAppear:(BOOL)animated {
+//    [super viewDidAppear:animated];
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    // ViewDidAppear did not work correctly when the symptom tracker is embedded (in a navigation controller) in
+    //   a TabBarViewController.  It was not called the first time the view is presented, so the delegate
+    //   was not getting set, which caused the calendar view across the top to not work.
+
+// ***************** END of LGS CUSTOMIZATION ********************
     
     NSAssert(self.navigationController, @"OCKSymptomTrackerViewController must be embedded in a navigation controller.");
     _weekViewController.symptomTrackerWeekView.delegate = self;
@@ -353,6 +363,8 @@
             break;
         }
     }
+    [_tableView reloadData];  // ************* LGS CUSTOMIZATION **************
+
 }
 
 - (void)carePlanStoreActivityListDidChange:(OCKCarePlanStore *)store {
@@ -428,6 +440,23 @@
     }
     cell.assessmentEvent = _events[indexPath.row];
     cell.showEdgeIndicator = self.showEdgeIndicators;
+
+    //************* LGS CUSTOMIZATION **************
+    //   Customized to remove right arrow accessory, gray out text, and disable interaction when assessment is no longer available to be taken
+    //   (because it has already been taken or because it is not for "today")
+    if (self.selectedDate) {
+        if ((self.selectedDate.day != [self today].day) || (cell.assessmentEvent.state == OCKCarePlanEventStateCompleted)) {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.titleLabel.textColor = [UIColor grayColor];
+            [cell setUserInteractionEnabled:NO];
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.titleLabel.textColor = [UIColor blackColor];
+            [cell setUserInteractionEnabled:YES];
+        }
+    }
+    //************* END of LGS CUSTOMIZATION **************
+
     return cell;
 }
 

@@ -31,6 +31,7 @@
 
 #import <CareKit/CareKit.h>
 #import "OCKTableViewCell.h"
+#import "OCKLabel.h"  //****************** LGS CUSTOMIZATION *****************
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -38,6 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface OCKSymptomTrackerTableViewCell : OCKTableViewCell
 
 @property (nonatomic) OCKCarePlanEvent *assessmentEvent;
+@property (nonatomic, strong) OCKLabel *titleLabel;  //****************** LGS CUSTOMIZATION *****************
 
 @end
 

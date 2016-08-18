@@ -492,10 +492,19 @@ static const CGFloat MarginBetweenBarAndLabel = 6.0;
 - (void)setUpConstraints {
     NSMutableArray<NSLayoutConstraint *> *constraints = [NSMutableArray new];
     
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_colorBox]-6.0-[_label]-32.0-|"
+    //*************** LGS CUSTOMIZATION ***************
+    // CUSTOMIZED spacing within legend to make it easier to create legend on one line
+    //[constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_colorBox]-6.0-[_label]-32.0-|"
+    //                                                                         options:NSLayoutFormatDirectionLeadingToTrailing
+    //                                                                         metrics:nil
+    //                                                                           views:@{@"_colorBox":_colorBox, @"_label": _label}]];
+
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_colorBox]-6.0-[_label]-15.0-|"
                                                                              options:NSLayoutFormatDirectionLeadingToTrailing
                                                                              metrics:nil
                                                                                views:@{@"_colorBox":_colorBox, @"_label": _label}]];
+    //************ END of LGS CUSTOMIZATION ************
+
     
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_colorBox]-1.0-|"
                                                                              options:NSLayoutFormatDirectionLeadingToTrailing

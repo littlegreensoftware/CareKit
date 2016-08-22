@@ -300,7 +300,12 @@
                                       if ([date isLaterThan:[self today]]) {
                                           [values addObject:@(0)];
                                       } else if (totalEvents == 0) {
-                                          [values addObject:@(1)];
+                                          // **************** LGS CUSTOMIZATION ****************
+                                          // For days before the start of the study, don't fill in daily circle
+                                          //   as if it were complete
+                                          [values addObject:@(0)];
+                                          //[values addObject:@(1)];
+                                          // ************* END of LGS CUSTOMIZATION ************
                                       } else {
                                           [values addObject:@((float)completedEvents/totalEvents)];
                                       }

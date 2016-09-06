@@ -123,6 +123,16 @@
     [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:NSNotFound inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
+
+// ***************** LGS CUSTOMIZATION ********************
+// Added this and make it accessible from the outside so we could force the view to update
+//   when the date changes
+- (void)showToday {
+    self.selectedDate = [NSDateComponents ock_componentsWithDate:[NSDate date] calendar:_calendar];
+    [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:NSNotFound inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+}
+// ***************** END of LGS CUSTOMIZATION ********************
+
 - (void)prepareView {
     if (!_headerView) {
         _headerView = [[OCKSymptomTrackerTableViewHeader alloc] initWithFrame:CGRectZero];

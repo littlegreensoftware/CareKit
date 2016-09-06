@@ -126,6 +126,12 @@ OCK_CLASS_AVAILABLE
  */
 @property (nonatomic) BOOL showEdgeIndicators;
 
+
+// ***************** LGS CUSTOMIZATION ********************
+- (void)showToday;
+// ***************** END of LGS CUSTOMIZATION ********************
+
+
 @end
 
 NS_ASSUME_NONNULL_END
